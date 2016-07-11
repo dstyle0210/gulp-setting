@@ -6,6 +6,8 @@
     <title>Front-End 용 Task Runnner 걸프 셋팅 Gulp-setting by dstyle0210</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
@@ -15,34 +17,35 @@
     <link rel="stylesheet" href="stylesheets/ie.css">
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+<style>
+#header nav{background:none;}
+#header nav li.fork,#header nav li.me{float:right;margin-left:6px;}
+</style>
   </head>
   <body>
       <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/dstyle0210/gulp-setting">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/dstyle0210/gulp-setting/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/dstyle0210/gulp-setting/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+		<nav>
+			
+			<li class="downloads"><a href="https://github.com/dstyle0210/gulp-setting/zipball/master"><i class="fa fa-cloud-download" aria-hidden="true"></i> ZIP</a></li>
+			<li class="fork"><a href="https://github.com/dstyle0210/gulp-setting"><i class="fa fa-github" aria-hidden="true"></i>  GitHub</a></li>
+			<li class="me"><a href="http://dstyle0210.github.io/">Ds</a></li>
+			<li class="title">LINKS</li>
+		</nav>
+	</div><!-- end header -->
 
     <div class="wrapper">
 
       <section>
         <div id="title">
           <h1>Gulp-setting</h1>
-          <p>Dstyle&#39;s Gulp Setting (Default)</p>
+          <p>웹 프로젝트 진행시에 사용하는 Gulp Task Scaffolding 입니다.</p>
           <hr>
           <span class="credits left">Project maintained by <a href="https://github.com/dstyle0210">dstyle0210</a></span>
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
         
-        <h3>Dstyle's Gulp Setting</h3>
-        <p>웹 프로젝트 진행시에 사용하는 CSS , JS , HTML압축을 기본으로 지원하는 Task Scaffolding 입니다.</p>
-        
         <h3>USE</h3>
-        <p><a href="https://nodejs.org/ko/" target="_blank">nodejs</a>가 기본으로 설치되어있어야 하며, <a href="#">본 파일을 다운로드</a>받아서 프로젝트 루트에 압축을 풀어주고 도스창(CMD)을 열어서 아래와 같이 실행해주세요.</p>
+        <p><a href="https://nodejs.org/ko/" target="_blank">nodejs</a>가 기본으로 설치되어있어야 하며, <a href="https://github.com/dstyle0210/gulp-setting/zipball/master">본 파일을 다운로드</a>받아서 프로젝트 루트에 압축을 풀어주고 도스창(CMD)을 열어서 아래와 같이 실행해주세요.</p>
 <style>
 pre code span.c{color:#999;}
 </style>
@@ -59,7 +62,7 @@ pre code span.c{color:#999;}
 	</thead>
 	<tbody>
 		<tr>
-			<td>gulp</td>
+			<td>(Default)</td>
 			<td>build<br />watch</td>
 			<td>scss , less 을 컴파일하고, css 을 합친후에 각파일 감지를 시작합니다.</td>
 		</tr>
