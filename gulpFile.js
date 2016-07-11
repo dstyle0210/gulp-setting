@@ -72,19 +72,33 @@ function pipeLineConcatCSS(gulpFiles,folderName){
 };
 
 
-gulp.task("build",["css:concat"])
+gulp.task("build",function(callback){
+	runSequence("scss:build","less:build","css:concat",callback);
+});
+gulp.task("watch",function(callback){
+	runSequence("scss:watch","less:watch","css:watch",callback);
+});
+gulp.task("scss",function(callback){
+	runSequence("scss:build","scss:watch",callback);
+});
+gulp.task("less",function(callback){
+	runSequence("less:build","less:watch",callback);
+});
+gulp.task("css",function(callback){
+	runSequence("css:concat","css:watch",callback);
+});
+
+
 gulp.task("scss:build",function(){
 	return pipeLineScss( gulp.src(srcPath.scss+"/**/*.scss",{"base":srcPath.scss}) );
 });
-gulp.task("less:build",["scss:build"],function(){
+gulp.task("less:build",function(){
 	return pipeLineLess( gulp.src(srcPath.less+"/**/*.less",{"base":srcPath.less}) );
 	
 });
-gulp.task("css:concat",["less:build"], folders(srcPath.css, function(folder){
+gulp.task("css:concat", folders(srcPath.css, function(folder){
     return pipeLineConcatCSS( gulp.src(path.join(srcPath.css, folder, '*.css')) , folder + '.css' );
 }));
-
-gulp.task("watch",["css:watch"])
 gulp.task("scss:watch",function(){
 	return gulp.watch(srcPath.scss+"/**/*.scss").on("change",function(file){
 		var name = path.parse(file.path).base;
@@ -92,25 +106,22 @@ gulp.task("scss:watch",function(){
 		console.log(getTimeStamp() + " [sass:watch] "+name+" changed");
 	});
 });
-
 /*! LESS watch */
-gulp.task("less:watch",["scss:watch"],function(){
+gulp.task("less:watch",function(){
 	return gulp.watch(srcPath.less+"/**/*.less").on("change",function(file){
 		var name = path.parse(file.path).base;
 		pipeLineLess( gulp.src(file.path,{"base":srcPath.less}) );
 		console.log(getTimeStamp() + " [less:watch] "+name+" changed");
 	});
 });
-
 /*! CSS Watch */
-gulp.task("css:watch",["less:watch"],function(){
+gulp.task("css:watch",function(){
 	return gulp.watch([srcPath.css+"/**/*.css","!"+srcPath.css+"/*.css"]).on("change",function(file){
 		var folder = getFolder(file);
 		pipeLineConcatCSS( gulp.src(srcPath.css+"/"+folder+"/*.css") , folder+'.css' );
 		console.log(getTimeStamp() + " [css:watch] "+folder+".css concated");
 	});
 });
-
 /*! dist : CSS */
 gulp.task("css:dist",function(){
 	gulp.src(srcPath.css+"/*.css")
