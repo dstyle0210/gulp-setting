@@ -1,5 +1,5 @@
 /**
- * Gulp Setting v0.0.2
+ * Gulp Setting v0.0.3
  * @ahther 디스타일(마봉아빠 , dstyle0210@gmail.com)
  * @url : https://dstyle0210.github.io/gulp-setting/
  */
