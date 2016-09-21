@@ -42,7 +42,7 @@ gulp.task("build",function(callback){
     runSequence("scss:build","less:build","css:concat",callback);
 });
 gulp.task("watch",function(callback){
-    runSequence("build","scss:watch","less:watch","css:watch",callback);
+    runSequence("scss:watch","less:watch","css:watch",callback);
 });
 gulp.task("scss",function(callback){
     runSequence("scss:build","scss:watch",callback);
