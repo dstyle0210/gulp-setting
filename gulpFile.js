@@ -2,6 +2,7 @@
  * Gulp Setting v0.1.0
  * @ahther 디스타일(마봉아빠 , dstyle0210@gmail.com)
  * @url : https://dstyle0210.github.io/gulp-setting/
+ * @blog : http://dstyleitsme.tistory.com
  */
 
 'use strict';
