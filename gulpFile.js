@@ -1,5 +1,5 @@
 /**
- * Gulp Setting v0.1.0
+ * Gulp Setting v0.1.1
  * @ahther 디스타일(마봉아빠 , dstyle0210@gmail.com)
  * @url : https://dstyle0210.github.io/gulp-setting/
  * @blog : http://dstyleitsme.tistory.com
@@ -84,7 +84,7 @@ gulp.task("css:watch",function(){
     });
 });
 gulp.task("css:dist",function(){
-    gulp.src(srcPath.css+"/*.css")
+    gulp.src([srcPath.css+"/*.css","!"+srcPath.css+"/_*.css"])
         .pipe(csso())
         .pipe(replace(/}/g,'}\n'))
         .pipe(replace('/*!','\n/*!'))
@@ -92,8 +92,6 @@ gulp.task("css:dist",function(){
         .pipe(replace('"UTF-8";','"UTF-8";\n'))
         .pipe(gulp.dest(distPath.css));
 });
-
-
 
 // 메소드 만들기
 function getFolder(file){
@@ -108,11 +106,15 @@ function getTimeStamp() {
 function pipeLineScss(gulpFiles){
     return gulpFiles.pipe(sass({indentType:"tab",indentWidth:1}).on('error', sass.logError))
         .pipe(csscomb())
+        .pipe(replace('@charset "UTF-8";',''))
+        .pipe(insert.prepend('@charset "UTF-8";\n'))
         .pipe(gulp.dest(srcPath.css));
 };
 function pipeLineLess(gulpFiles){
     return gulpFiles.pipe(less())
         .pipe(csscomb())
+        .pipe(replace('@charset "UTF-8";',''))
+        .pipe(insert.prepend('@charset "UTF-8";\n'))
         .pipe(gulp.dest(srcPath.css));
 };
 function pipeLineConcatCSS(gulpFiles,folderName){
